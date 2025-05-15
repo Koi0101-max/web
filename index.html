@@ -14,6 +14,10 @@
             --shadow: 0px 6px 64px rgba(112, 144, 176, 0.1);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -171,7 +175,7 @@
             display: flex;
             flex-direction: column;
             gap: 5rem;
-            max-width: 1200px;
+            width: 100%; /* 修改为100%宽度 */
             margin: 0 auto;
         }
 
@@ -184,8 +188,9 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* 固定4列布局 */
             gap: 2rem;
+            row-gap: 3rem; /* 增加行间距保持视觉平衡 */
         }
 
         .project-card {
@@ -355,6 +360,23 @@
             font-size: 1.125rem;
             color: var(--text-secondary);
         }
+
+        /* 禁用特定按钮交互效果 */
+        .hero-content .btn {
+            pointer-events: none;
+            opacity: 1; /* 保持原有视觉状态 */
+            /* 保留悬停效果但禁用交互 */
+            &:hover, &:active, &:focus {
+                text-decoration: none;
+                transform: none;
+            }
+        }
+        
+        /* 恢复导航栏链接默认样式 */
+        .nav-link {
+            /* 移除可能存在的自定义样式干扰 */
+            transition: none;
+        }
     </style>
 </head>
 <body>
@@ -377,10 +399,6 @@
             <p class="description">
                 一个帮助你把AI真正用起来的女子
             </p>
-            <div class="buttons">
-                <a href="#projects" class="btn btn-primary">文章</a>
-                <a href="#tools" class="btn btn-secondary">工具</a>
-            </div>
         </div>
     </section>
 
@@ -393,21 +411,21 @@
                     <img src="images/project1.jpg" alt="项目开发示例图" style="width:100%; height:200px; object-fit:cover;">
                 </div>
                 <div class="project-info">
-                    <h3 class="project-title">项目开发</h3>
+                    <h3 class="project-title">文科生的我用DeepSeek+AI程序员半小时开发了一个小程序</h3>
                     <p class="project-desc">
-                        文科生的我用DeepSeek+AI程序员半小时开发了一个小程序
+                        上线了我的第一个小程序
                     </p>
                     <a href="https://mp.weixin.qq.com/s/mGaQn6rWQtfylNYGfQu0Eg" class="project-link">查看原文</a>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-image">
-                    <img src="images/project2.jpg" alt="图片生成示例图" style="width:100%; height:200px; object-fit:cover;">
+                    <img src="images/project2.jpg" alt='假期测试完豆包最新图像生成能力，我只能说："太强啦！"' style="width:100%; height:200px; object-fit:cover;">
                 </div>
                 <div class="project-info">
-                    <h3 class="project-title">图片生成</h3>
+                    <h3 class="project-title">假期测试完豆包最新图像生成能力，我只能说："太强啦！"</h3>
                     <p class="project-desc">
-                        假期测试完豆包最新图像生成能力，我只能说：“太强啦！”
+                        超能创意1.0，牛的！
                     </p>
                     <a href="https://mp.weixin.qq.com/s/cJ1Bp0HBus5Rjb7gu_-aEg" class="project-link">查看原文</a>
                 </div>
@@ -417,11 +435,81 @@
                     <img src="images/project3.jpg" alt="视频制作示例图" style="width:100%; height:200px; object-fit:cover;">
                 </div>
                 <div class="project-info">
-                    <h3 class="project-title">视频制作</h3>
+                    <h3 class="project-title">用可灵2.0拍电影？我试着做了一个1分钟短片</h3>
                     <p class="project-desc">
-                        用可灵2.0拍电影？我试着做了一个1分钟短片
+                        人人都可以做导演的时代，真的来了。
                     </p>
                     <a href="https://mp.weixin.qq.com/s/UXxD3uREZgHQx3B31f6V2g" class="project-link">查看原文</a>
+                </div>
+            </div>
+
+            <!-- 新增卡片1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/zp.png" alt="用全网爆火的\"平凡无奇\"iPhone自拍图，我发现了新的玩法！" style="width:100%; height:200px; object-fit:cover;">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">用全网爆火的"平凡无奇"iPhone自拍图，我发现了新的玩法！</h3>
+                    <p class="project-desc">
+                        AI生图的真实感，我悟了！
+                    </p>
+                    <a href="https://mp.weixin.qq.com/s/aVrmITrNNkZwOAWvJgaLdA" class="project-link">查看原文</a>
+                </div>
+            </div>
+
+            <!-- 新增卡片2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/manus.png" alt="数据分析示例图" style="width:100%; height:200px; object-fit:cover;">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Manus深度体验，10个Case告诉你通用型Agent能做什么？</h3>
+                    <p class="project-desc">
+                        Manus 对所有用户开放
+                    </p>
+                    <a href="https://mp.weixin.qq.com/s/laPjVx1GPpRbZL79NOXvCQ" class="project-link">查看原文</a>
+                </div>
+            </div>
+
+            <!-- 新增卡片3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/lnn.png" alt="办公自动化示例图" style="width:100%; height:200px; object-fit:cover;">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">爆款思路公开，2分钟学会AI制作治愈系老奶奶文案+漫画</h3>
+                    <p class="project-desc">
+                        流量密码
+                    </p>
+                    <a href="https://mp.weixin.qq.com/s/tPutZ7yA65Vk2gZ6nfd1cA" class="project-link">查看原文</a>
+                </div>
+            </div>
+
+            <!-- 新增卡片4 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/jbl.png" alt="AI生成吉卜力风格图片示例图" style="width:100%; height:200px; object-fit:cover;">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">AI生成吉卜力风格图片，我找到了7个GPT-4o平替工具</h3>
+                    <p class="project-desc">
+                        用宫崎骏的视角看世界
+                    </p>
+                    <a href="https://mp.weixin.qq.com/s/pgz9ZJUDnoB7y4AeJmdNkg" class="project-link">查看原文</a>
+                </div>
+            </div>
+
+            <!-- 新增卡片5 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/sk.png" alt="DeepSeek互动小游戏示例图" style="width:100%; height:200px; object-fit:cover;">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">DeepSeek-V3更新炸场，我连夜做了3个互动小游戏</h3>
+                    <p class="project-desc">
+                        好玩！爱玩！
+                    </p>
+                    <a href="https://mp.weixin.qq.com/s/kHupA9UsUNW4LX6IFAUbdw" class="project-link">查看原文</a>
                 </div>
             </div>
         </div>
@@ -525,7 +613,7 @@
             <div class="tool-card">
                 <a href="https://app.klingai.com/cn/" target="_blank" style="position: absolute; inset: 0; z-index: 20;"></a>
                 <div style="margin-bottom: -1.5rem; z-index: 10;">
-                    <a href="#" class="btn btn-primary">AI视频</a>
+                    <a href="#tools" class="btn btn-primary">AI视频</a>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1rem; padding: 0.5rem 1.5rem;">
                     <img src="images/可灵.png" alt="可灵图标" style="width: 64px; height: 64px; object-fit: cover; border-radius: 0.5rem;">
@@ -540,7 +628,7 @@
             <div class="tool-card">
                 <a href="https://aibrm.com/?code=fx_cda" target="_blank" style="position: absolute; inset: 0; z-index: 20;"></a>
                 <div style="margin-bottom: -1.5rem; z-index: 10;">
-                    <a href="#" class="btn btn-primary">AI视频</a>
+                    <a href="#tools" class="btn btn-primary">AI视频</a>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1rem; padding: 0.5rem 1.5rem;">
                     <img src="images/白日梦.jpg" alt="白日梦图标" style="width: 64px; height: 64px; object-fit: cover; border-radius: 0.5rem;">
@@ -555,7 +643,7 @@
             <div class="tool-card">
                 <a href="https://hailuoai.com/video?utm_source=ai-bot.cn" target="_blank" style="position: absolute; inset: 0; z-index: 20;"></a>
                 <div style="margin-bottom: -1.5rem; z-index: 10;">
-                    <a href="#" class="btn btn-primary">AI视频</a>
+                    <a href="#tools" class="btn btn-primary">AI视频</a>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1rem; padding: 0.5rem 1.5rem;">
                     <img src="images/海螺AI.jpg" alt="海螺AI图标" style="width: 64px; height: 64px; object-fit: cover; border-radius: 0.5rem;">
